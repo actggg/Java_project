@@ -13,7 +13,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -96,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             EditText editText = findViewById(getResources().getIdentifier("letter_input" + num + "_" + j, "id", getPackageName()));
             str += editText.getText().toString();
         }
-        if (check_in_file(str)){
+        if (check_in_file(str)) {
             if (empty == 0) {
                 for (int i = 0; i < 5; i++) {
                     int t = i + (num - 1) * 5;
@@ -119,8 +122,7 @@ public class MainActivity extends AppCompatActivity {
                     block(number_str);
                 }
             }
-        }
-        else{
+        } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Такого слова не существует")
                     .setPositiveButton("OK", null)
@@ -184,50 +186,31 @@ public class MainActivity extends AppCompatActivity {
         return result.toString();
     }
 
-    public Boolean check_in_base(String text) {
+
+    public boolean check_in_file(String s) {
         try {
-            String dbPath = getApplicationContext().getDatabasePath("words_database.db").getAbsolutePath();
+            String filePath = "nn_words.txt"; // Имя файла в папке assets
 
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
-
-            String sql = "SELECT * FROM words WHERE word = ?";
-
-            PreparedStatement statement = connection.prepareStatement(sql);
-
-            statement.setString(1, text);
-
-            ResultSet resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
+            if (isWordPresent(s, filePath)) {
                 return true;
             } else {
                 return false;
             }
-
-        } catch (SQLException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
     }
-    public boolean check_in_file(String s) {
-        String filePath = "C://Users//yuraz//AndroidStudioProjects//MyApplication9//app//src//main//assets//nn_words.txt"; // Путь к вашему файлу
 
-        if (isWordPresent(s, filePath)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean isWordPresent(String wordToCheck, String filePath) {
+    public boolean isWordPresent(String wordToCheck, String filePath) throws IOException {
         HashMap<String, Integer> wordMap = new HashMap<>();
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(getAssets().open(filePath)));
             String line;
 
             while ((line = reader.readLine()) != null) {
-                wordMap.put(line, 1); // Добавляем слово в HashMap
+                wordMap.put(line.trim(), null);
             }
 
             reader.close();
@@ -235,8 +218,6 @@ public class MainActivity extends AppCompatActivity {
             return wordMap.containsKey(wordToCheck);
 
         } catch (Exception e) {
-            Button b = findViewById(R.id.check_button);
-            b.setText(wordToCheck);
             return false;
         }
     }
