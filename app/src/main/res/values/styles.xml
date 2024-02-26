@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Другие настройки стиля -->
-        <item name="android:buttonStyle">@style/MyButtonStyle</item>
-    </style>
 
-    <style name="MyButtonStyle" parent="Widget.AppCompat.Button">
+    <style name="MyButtonStyle">
         <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/light_blue</item>
+    </style>
+    <style name="CustomButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:radius">8dp</item> <!-- Задаем радиус скругления углов -->
+    </style>
+    <style name="CustomButtonFont">
+        <item name="android:fontFamily">Korova</item>
     </style>
 </resources>

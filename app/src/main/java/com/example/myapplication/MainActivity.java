@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.graphics.Color;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -36,6 +37,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        TextView tv = findViewById(R.id.textViewTitle);
+        tv.setTextAppearance(this, R.style.CustomButtonFont);
+        //Button b = findViewById(R.id.buttonSubmit);
+        //b.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+          //  public void onClick(View v) {
+           //     word();
+           // }
+       // });
+    }
+
+    public void word(){
         setContentView(R.layout.word);
 
         for (int i = 1; i <= 5; i++) {
@@ -59,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     public void trueWord(int num, String text, boolean triger) {
         String str = "";
         for (int j = 1; j <= 5; j++) {
