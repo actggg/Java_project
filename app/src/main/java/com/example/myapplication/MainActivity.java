@@ -2,10 +2,13 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -19,28 +22,108 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class MainActivity extends AppCompatActivity {
 
     public int number_str = 1;
     public String my_word;
-
     SharedPreferences sPref;
     public String my_button;
-    public int num = 1;
-    int lvl_in_main = 1;
-    int lvl_in_easy = 1;
-    int lvl_in_medium = 1;
-    int lvl_in_hard = 1;
+    public Context context;
+    private Activity activity;
+    public Integer lvl_in_main = 1;
+    public Integer lvl_in_easy = 1;
+    public Integer lvl_in_medium = 1;
+    public Integer lvl_in_hard = 1;
+    public Integer saved = 1;
+    final String SAVED_TEXT = "TEXT";
+    final String SAVED_NUM = "NUMBER";
+
+    public Menu menu;
 
     public EditText[] k;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = this;
+        activity = this;
+        /*
+        context = this;
+        activity = this;
+        try {
+            Word pl = new Word(activity, context, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
+            pl.word("button_easy");
+        }
+        catch (Exception e){
+            Log.d("TAG2", e.getMessage());
+        }
+        */
         loadText();
-        menu();
+        this.menu = new Menu(activity, context, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
+        menu.menu();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        saveText();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveText();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        saveText();
+    }
+
+    void saveText() {
+        lvl_in_main = this.menu.getLvl_in_main();
+        lvl_in_easy = this.menu.getLvl_in_easy();
+        lvl_in_medium = this.menu.getLvl_in_medium();
+        lvl_in_hard = this.menu.getLvl_in_hard();
+
+        Log.d("TWW", "dddd");
+        sPref = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = sPref.edit();
+        editor.putString(SAVED_TEXT, (lvl_in_main).toString());
+        editor.putString("lvl_in_easy", lvl_in_easy.toString());
+        editor.putString("lvl_in_medium", lvl_in_medium.toString());
+        editor.putString("lvl_in_hard", lvl_in_hard.toString());
+        editor.apply();
+        String b = sPref.getString(SAVED_TEXT, "1");
+        Log.d("TWW", b);
+    }
+
+    void loadText() {
+        sPref = getPreferences(MODE_PRIVATE);
+        String a = sPref.getString(SAVED_TEXT, "1");
+        String b = sPref.getString("lvl_in_easy", "1");
+        String c = sPref.getString("lvl_in_medium", "1");
+        String d = sPref.getString("lvl_in_hard", "1");
+
+
+        Log.d("TWW2", a);
+        lvl_in_main = Integer.parseInt(a);
+        lvl_in_easy = Integer.parseInt(b);
+        lvl_in_medium = Integer.parseInt(c);
+        lvl_in_hard = Integer.parseInt(d);
+    }
+}
+
+
+    /*
+
+
 
     public void menu() {
         setContentView(R.layout.activity_main);
@@ -49,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //pl.word("buttonWordOfTheDay");
                 word("buttonWordOfTheDay");
             }
         });
@@ -76,21 +160,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Button buttonhard = findViewById(R.id.button_hard);
+        buttonhard.setText(Integer.toString(saved));
         buttonhard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 word("button_hard");
             }
         });
-        Button buttonfriend = findViewById(R.id.buttonWordOfTheDay);
-        buttonhard.setOnClickListener(new View.OnClickListener() {
+        Button buttonfriend = findViewById(R.id.buttonFriendWord);
+        buttonfriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveText();
             }
         });
     }
-
     public void word(String clicked_button) {
         setContentView(R.layout.word);
         TextView tx = findViewById(R.id.wordli_text);
@@ -133,7 +217,6 @@ public class MainActivity extends AppCompatActivity {
             .setPositiveButton("OK", null)
                     .show();
     menu();}
-
     public void trueWord(int num, String clicked_button) {
         String str = "";
         for (int j = 1; j <= 5; j++) {
@@ -243,24 +326,44 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         saveText();
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveText();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        saveText();
+    }
 
     void saveText() {
+        Log.d("TAG1", "dddd");
         sPref = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sPref.edit();
-        editor.putString("lvl_in_main", String.valueOf(lvl_in_main));
-        editor.putString("lvl_in_easy", String.valueOf(lvl_in_easy));
-        editor.putString("lvl_in_medium", String.valueOf(lvl_in_medium));
-        editor.putString("lvl_in_hard", String.valueOf(lvl_in_hard));
+        editor.putString(SAVED_TEXT, (lvl_in_main).toString());
+        editor.putString("lvl_in_easy", lvl_in_easy.toString());
+        editor.putString("lvl_in_medium", lvl_in_medium.toString());
+        editor.putString("lvl_in_hard", lvl_in_hard.toString());
         editor.apply();
+        String b = sPref.getString(SAVED_TEXT, "1");
+        Log.d("TAG1", b);
     }
 
     void loadText() {
         sPref = getPreferences(MODE_PRIVATE);
-        lvl_in_main = Integer.parseInt(sPref.getString("lvl_in_main", "2"));
-        lvl_in_easy = Integer.parseInt(sPref.getString("lvl_in_easy", "2"));
-        lvl_in_medium = Integer.parseInt(sPref.getString("lvl_in_medium", "2"));
-        lvl_in_hard = Integer.parseInt(sPref.getString("lvl_in_hard", "2"));
+        String a = sPref.getString(SAVED_TEXT, "1");
+
+        Log.d("TAG", a);
+        lvl_in_main = Integer.parseInt(a);
+        //lvl_in_easy = Integer.parseInt(sPref.getString("lvl_in_easy", "22"));
+       // lvl_in_medium = Integer.parseInt(sPref.getString("lvl_in_medium", "22"));
+       // lvl_in_hard = Integer.parseInt(sPref.getString("lvl_in_hard", "22"));
+       // saved = Integer.parseInt(sPref.getString("s", "22"));
+        menu();
     }
+
 
 
 
@@ -320,7 +423,7 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    private void applyRussianLettersFilter(EditText editText) {
+    public void applyRussianLettersFilter(EditText editText) {
         editText.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -411,3 +514,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
+     */
+
+
