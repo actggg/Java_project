@@ -20,10 +20,12 @@ public class Word{
     public String my_word;
     public EditText[] inputs;
     public Integer number_str;
+    public Menu menu1;
 
-    public Word( Activity _activity, Context context, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard){
+    public Word( Activity _activity, Context context, Menu menu, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard){
         this.activity = _activity;
         this.context = context;
+        this.menu1 = menu;
         this.lvl_in_main = lvl_in_main;
         this.lvl_in_easy = lvl_in_easy;
         this.lvl_in_medium = lvl_in_medium;
@@ -66,11 +68,10 @@ public class Word{
                 activity.findViewById(R.id.letter_input4_1), activity.findViewById(R.id.letter_input4_2), activity.findViewById(R.id.letter_input4_3), activity.findViewById(R.id.letter_input4_4), activity.findViewById(R.id.letter_input4_5),
                 activity.findViewById(R.id.letter_input5_1), activity.findViewById(R.id.letter_input5_2), activity.findViewById(R.id.letter_input5_3), activity.findViewById(R.id.letter_input5_4), activity.findViewById(R.id.letter_input5_5),};
         ImageButton back_button = activity.findViewById(R.id.back_button);
-        Menu menu = new Menu(activity, context, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                menu.menu();
+                set_and_menu(lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
             }
         });
         Button check_button = activity.findViewById(R.id.check_button);
@@ -87,13 +88,12 @@ public class Word{
                     lvl_in_easy = cbb.getLvl_in_easy();
                     lvl_in_medium = cbb.getLvl_in_medium();
                     lvl_in_hard = cbb.getLvl_in_hard();
-                    Menu menu = new Menu(activity, context, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
-                    menu.menu();
+                    set_and_menu(lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                     Dialog dialog = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                     dialog.dialog("Все верно!!!");
                 } else if (checker.check(number_str, clicked_button, inputs) == 2) {
                     Log.d("TEG1", "2");
-                    menu.menu();
+                    set_and_menu(lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                     Dialog dialog = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                     dialog.dialog("Вы ошиблись!!!");
                 } else if (checker.check(number_str, clicked_button, inputs) == 3){
@@ -101,10 +101,25 @@ public class Word{
                     number_str = checker.getNumber_str();
                     block(number_str);
                 }
+                else {
+                    Dialog dialog = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
+                    dialog.dialog("Такого слова не существует!!!");
+                }
+
             }
         });
     }
-}
+
+
+
+    public void set_and_menu(Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard){
+        menu1.setLvl_in_main(lvl_in_main);
+        menu1.setLvl_in_easy(lvl_in_easy);
+        menu1.setLvl_in_medium(lvl_in_medium);
+        menu1.setLvl_in_hard(lvl_in_hard);
+        menu1.menu();
+    }
+    }
         /*
         check_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,5 +128,4 @@ public class Word{
             }
         });
     }
-
          */

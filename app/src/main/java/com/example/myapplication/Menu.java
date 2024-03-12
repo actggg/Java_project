@@ -14,6 +14,7 @@ public class Menu{
     private Integer lvl_in_medium;
     private Integer lvl_in_hard;
     private Context context;
+    public Menu menu1;
 
     public Menu( Activity _activity, Context context, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard){
         this.activity = _activity;
@@ -22,6 +23,10 @@ public class Menu{
         this.lvl_in_easy = lvl_in_easy;
         this.lvl_in_medium = lvl_in_medium;
         this.lvl_in_hard = lvl_in_hard;
+    }
+
+    public void setMenu(Menu menu){
+        this.menu1 = menu;
     }
 
     public Integer getLvl_in_main() {
@@ -38,12 +43,26 @@ public class Menu{
         return lvl_in_hard;
     }
 
+    public void setLvl_in_main(int lvl) {
+        this.lvl_in_main = lvl;
+    }
+
+    public void setLvl_in_easy(int lvl) {
+        this.lvl_in_easy = lvl;
+    }
+    public void setLvl_in_medium(int lvl) {
+        this.lvl_in_medium = lvl;
+    }
+    public void setLvl_in_hard(int lvl) {
+        this.lvl_in_hard = lvl;
+    }
+
     public void menu() {
         activity.setContentView(R.layout.activity_main);
         Log.d("TAG", "my_str");
         try {
 
-            Word word = new Word(activity, context, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
+            Word word = new Word(activity, context, menu1, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
             Button b = activity.findViewById(R.id.buttonWordOfTheDay);
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -62,6 +81,7 @@ public class Menu{
                 }
             });
             Button buttoneasy = activity.findViewById(R.id.button_easy);
+            buttoneasy.setText("Легкий уровень " + lvl_in_easy + "/100");
             buttoneasy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -69,6 +89,7 @@ public class Menu{
                 }
             });
             Button buttonmed = activity.findViewById(R.id.button_medium);
+            buttonmed.setText("Средний уровень " + lvl_in_medium + "/100");
             buttonmed.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -77,6 +98,7 @@ public class Menu{
             });
             Log.d("TAG", "my_strrrrr");
             Button buttonhard = activity.findViewById(R.id.button_hard);
+            buttonhard.setText("Сложный уровень " + lvl_in_hard + "/100");
             buttonhard.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

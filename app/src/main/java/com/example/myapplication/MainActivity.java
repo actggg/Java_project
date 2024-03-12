@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -29,43 +30,38 @@ import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
-    public int number_str = 1;
-    public String my_word;
     SharedPreferences sPref;
-    public String my_button;
     public Context context;
     private Activity activity;
     public Integer lvl_in_main = 1;
     public Integer lvl_in_easy = 1;
     public Integer lvl_in_medium = 1;
     public Integer lvl_in_hard = 1;
-    public Integer saved = 1;
     final String SAVED_TEXT = "TEXT";
-    final String SAVED_NUM = "NUMBER";
+    public LVLS lvl = new LVLS();
 
     public Menu menu;
 
-    public EditText[] k;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
         activity = this;
-        /*
-        context = this;
-        activity = this;
+        loadText();
         try {
-            Word pl = new Word(activity, context, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
-            pl.word("button_easy");
+
+            Menu menu = new Menu(activity, context, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
+            this.menu = menu;
+            Log.d("TAG1", "e.getMessage()");
+            menu.setMenu(menu);
+            menu.menu();
+
         }
         catch (Exception e){
-            Log.d("TAG2", e.getMessage());
+            Log.d("TAG1", e.getMessage());
         }
-        */
-        loadText();
-        this.menu = new Menu(activity, context, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
-        menu.menu();
+
     }
 
     @Override
@@ -91,10 +87,13 @@ public class MainActivity extends AppCompatActivity {
         lvl_in_easy = this.menu.getLvl_in_easy();
         lvl_in_medium = this.menu.getLvl_in_medium();
         lvl_in_hard = this.menu.getLvl_in_hard();
-
-        Log.d("TWW", "dddd");
+        Log.d("TWW", lvl_in_main.toString());
         sPref = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sPref.edit();
+        //editor.putString(SAVED_TEXT, "1");
+        //editor.putString("lvl_in_easy", "1");
+        //editor.putString("lvl_in_medium", "1");
+        //editor.putString("lvl_in_hard", "1");
         editor.putString(SAVED_TEXT, (lvl_in_main).toString());
         editor.putString("lvl_in_easy", lvl_in_easy.toString());
         editor.putString("lvl_in_medium", lvl_in_medium.toString());
@@ -516,5 +515,3 @@ public class MainActivity extends AppCompatActivity {
 }
 
      */
-
-

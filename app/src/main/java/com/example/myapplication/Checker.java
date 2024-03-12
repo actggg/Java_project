@@ -28,6 +28,7 @@ public class Checker {
     }
 
     public int check(Integer number_str, String clicked_button, EditText[] inputs) {
+        Log.d("TAG2", "str");
         this.number_str = number_str;
         int empty = 0;
         for (int i = 0; i < 5; i++) {
@@ -40,7 +41,8 @@ public class Checker {
             EditText editText = activity.findViewById(activity.getResources().getIdentifier("letter_input" + number_str + "_" + j, "id", activity.getPackageName()));
             str += editText.getText().toString();
         }
-       File_helper fl = new File_helper(context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
+        Log.d("TAG2", "str");
+        File_helper fl = new File_helper(context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
         if (fl.check_in_file(str)) {
             if (empty == 0) {
                 String my_str = "";
