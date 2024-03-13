@@ -35,17 +35,9 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/buttonWordOfTheDay"
-            android:layout_width="140dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="10dp"
-            android:text="Слово дня"
-            android:textSize="20dp" />
-
-        <Button
             android:id="@+id/buttonFriendWord"
-            android:layout_width="140dp"
-            android:layout_height="91dp"
+            android:layout_width="194dp"
+            android:layout_height="76dp"
             android:text="Слово друга"
             android:textSize="20dp" />
 

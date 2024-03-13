@@ -87,31 +87,25 @@ public class MainActivity extends AppCompatActivity {
         lvl_in_easy = this.menu.getLvl_in_easy();
         lvl_in_medium = this.menu.getLvl_in_medium();
         lvl_in_hard = this.menu.getLvl_in_hard();
-        Log.d("TWW", lvl_in_main.toString());
         sPref = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sPref.edit();
-        //editor.putString(SAVED_TEXT, "1");
+        //editor.putString("lvl_in_main", "1");
         //editor.putString("lvl_in_easy", "1");
         //editor.putString("lvl_in_medium", "1");
         //editor.putString("lvl_in_hard", "1");
-        editor.putString(SAVED_TEXT, (lvl_in_main).toString());
-        editor.putString("lvl_in_easy", lvl_in_easy.toString());
-        editor.putString("lvl_in_medium", lvl_in_medium.toString());
-        editor.putString("lvl_in_hard", lvl_in_hard.toString());
+        editor.putString("lvl_in_main2", (lvl_in_main).toString());
+        editor.putString("lvl_in_easy2", lvl_in_easy.toString());
+        editor.putString("lvl_in_medium2", lvl_in_medium.toString());
+        editor.putString("lvl_in_hard2", lvl_in_hard.toString());
         editor.apply();
-        String b = sPref.getString(SAVED_TEXT, "1");
-        Log.d("TWW", b);
     }
 
     void loadText() {
         sPref = getPreferences(MODE_PRIVATE);
-        String a = sPref.getString(SAVED_TEXT, "1");
-        String b = sPref.getString("lvl_in_easy", "1");
-        String c = sPref.getString("lvl_in_medium", "1");
-        String d = sPref.getString("lvl_in_hard", "1");
-
-
-        Log.d("TWW2", a);
+        String a = sPref.getString("lvl_in_main2", "1");
+        String b = sPref.getString("lvl_in_easy2", "1");
+        String c = sPref.getString("lvl_in_medium2", "1");
+        String d = sPref.getString("lvl_in_hard2", "1");
         lvl_in_main = Integer.parseInt(a);
         lvl_in_easy = Integer.parseInt(b);
         lvl_in_medium = Integer.parseInt(c);

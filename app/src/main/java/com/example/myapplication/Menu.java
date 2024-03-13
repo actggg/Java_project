@@ -59,7 +59,6 @@ public class Menu{
 
     public void menu() {
         activity.setContentView(R.layout.activity_main);
-        Log.d("TAG", "my_str");
         try {
 
             Word word = new Word(activity, context, menu1, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
@@ -70,7 +69,6 @@ public class Menu{
                     word.word("buttonWordOfTheDay");
                 }
             });
-            Log.d("TAG", "my_strrr");
             Button buttonlevels = activity.findViewById(R.id.buttonlevels);
             buttonlevels.setText("Прохождение уровней \n Уровень " + lvl_in_main + "/100");
             buttonlevels.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +94,6 @@ public class Menu{
                     word.word("button_medium");
                 }
             });
-            Log.d("TAG", "my_strrrrr");
             Button buttonhard = activity.findViewById(R.id.button_hard);
             buttonhard.setText("Сложный уровень " + lvl_in_hard + "/100");
             buttonhard.setOnClickListener(new View.OnClickListener() {
@@ -106,14 +103,14 @@ public class Menu{
                 }
             });
             Button buttonfriend = activity.findViewById(R.id.buttonFriendWord);
-            Log.d("TAG", "my_strrrrrrr");
             buttonfriend.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //saveText();
+                    Dialog dialog = new Dialog(activity, context, menu1, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
+                    dialog.showChooseDialog();
+
                 }
             });
-            Log.d("TAG", "УРА Я ПРОШЕЛ МЕЙН");
         }
         catch (Exception e){
             Log.d("TAGGG", e.getMessage());

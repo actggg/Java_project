@@ -32,6 +32,7 @@ public class Word{
         this.lvl_in_hard = lvl_in_hard;
     }
 
+
     public static void block(Integer num) {
         for (int i = 1; i <= 5; i++) {
             for (int j = 1; j <= 5; j++) {
@@ -43,6 +44,57 @@ public class Word{
                 }
             }
         }
+    }
+
+    public void word_my_word(String my_word){
+        activity.setContentView(R.layout.word);
+        this.number_str = 1;
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 1; j <= 5; j++) {
+                EditText editText = activity.findViewById(activity.getResources().getIdentifier("letter_input" + i + "_" + j, "id", activity.getPackageName()));
+                Play play = new Play();
+                play.applyRussianLettersFilter(editText);
+            }
+        }
+        block(number_str);
+        inputs = new EditText[]{activity.findViewById(R.id.letter_input1_1), activity.findViewById(R.id.letter_input1_2), activity.findViewById(R.id.letter_input1_3), activity.findViewById(R.id.letter_input1_4), activity.findViewById(R.id.letter_input1_5),
+                activity.findViewById(R.id.letter_input2_1), activity.findViewById(R.id.letter_input2_2), activity.findViewById(R.id.letter_input2_3), activity.findViewById(R.id.letter_input2_4), activity.findViewById(R.id.letter_input2_5),
+                activity.findViewById(R.id.letter_input3_1), activity.findViewById(R.id.letter_input3_2), activity.findViewById(R.id.letter_input3_3), activity.findViewById(R.id.letter_input3_4), activity.findViewById(R.id.letter_input3_5),
+                activity.findViewById(R.id.letter_input4_1), activity.findViewById(R.id.letter_input4_2), activity.findViewById(R.id.letter_input4_3), activity.findViewById(R.id.letter_input4_4), activity.findViewById(R.id.letter_input4_5),
+                activity.findViewById(R.id.letter_input5_1), activity.findViewById(R.id.letter_input5_2), activity.findViewById(R.id.letter_input5_3), activity.findViewById(R.id.letter_input5_4), activity.findViewById(R.id.letter_input5_5),};
+        ImageButton back_button = activity.findViewById(R.id.back_button);
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menu1.menu();
+            }
+        });
+        Button check_button = activity.findViewById(R.id.check_button);
+        String clicked_button = "PASS";
+        check_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Checker checker = new Checker(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
+                if (checker.check(number_str, clicked_button, inputs) == 1){
+                    menu1.menu();
+                    Dialog dialog = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
+                    dialog.dialog("Все верно!!!");
+                } else if (checker.check(number_str, clicked_button, inputs) == 2) {
+                    menu1.menu();
+                    Dialog dialog = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
+                    dialog.dialog("Вы ошиблись!!!");
+                } else if (checker.check(number_str, clicked_button, inputs) == 3){
+                    Log.d("TEG1", "3");
+                    number_str = checker.getNumber_str();
+                    block(number_str);
+                }
+                else {
+                    Dialog dialog = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
+                    dialog.dialog("Такого слова не существует!!!");
+                }
+
+            }
+        });
     }
 
     public void word(String clicked_button) {
