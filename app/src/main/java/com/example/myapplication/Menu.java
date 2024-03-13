@@ -62,13 +62,6 @@ public class Menu{
         try {
 
             Word word = new Word(activity, context, menu1, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
-            Button b = activity.findViewById(R.id.buttonWordOfTheDay);
-            b.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    word.word("buttonWordOfTheDay");
-                }
-            });
             Button buttonlevels = activity.findViewById(R.id.buttonlevels);
             buttonlevels.setText("Прохождение уровней \n Уровень " + lvl_in_main + "/100");
             buttonlevels.setOnClickListener(new View.OnClickListener() {
