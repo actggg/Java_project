@@ -11,15 +11,16 @@ import android.widget.TextView;
 
 public class Word{
     private static Activity activity;
-    public String my_button;
+    private String my_button;
     private Integer lvl_in_main;
     private Integer lvl_in_easy;
     private Integer lvl_in_medium;
     private Integer lvl_in_hard;
     private Context context;
-    public String my_word;
-    public EditText[] inputs;
-    public Integer number_str;
+    private String my_word;
+    private EditText[] inputs;
+    private Button[] buttons;
+    private Integer number_str;
     public Menu menu1;
 
     public Word( Activity _activity, Context context, Menu menu, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard){
@@ -47,6 +48,7 @@ public class Word{
     }
 
     public void word_my_word(String my_word){
+        set_button_click();
         activity.setContentView(R.layout.word);
         this.number_str = 1;
         for (int i = 1; i <= 5; i++) {
@@ -162,6 +164,20 @@ public class Word{
         });
     }
 
+    public void set_button_click(){
+        Button bottons[] = new Button[33];
+        char letter = 'а';
+        for (int i = 1; i <= 33; i++) {
+                Button button = activity.findViewById(activity.getResources().getIdentifier("button_" + letter, "id", activity.getPackageName()));
+                letter++;
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        set_and_menu(lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
+                    }
+                });
+        }}
+
 
 
     public void set_and_menu(Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard){
@@ -170,6 +186,7 @@ public class Word{
         menu1.setLvl_in_medium(lvl_in_medium);
         menu1.setLvl_in_hard(lvl_in_hard);
         menu1.menu();
+
     }
     }
         /*

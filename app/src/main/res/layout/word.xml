@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <ImageButton
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
@@ -368,5 +369,349 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/letter_input5_5" />
+
+    <LinearLayout
+        android:layout_height="208dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="520dp"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <!-- 2 кнопки с буквами "а" и "б" -->
+            <Button
+                android:id="@+id/button_й"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="й"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_ц"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="ц"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_у"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="у"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_к"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="к"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_е"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="е"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_н"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="н"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_г"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="г"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_ш"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="ш"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_щ"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="щ"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_з"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="з"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_х"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="х"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_ъ"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="ъ"
+                android:textSize="24sp" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <!-- 2 кнопки с буквами "в" и "г" -->
+            <Button
+                android:id="@+id/button_ф"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="ф"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_ы"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="ы"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_в"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="в"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_а"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="а"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_п"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="п"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_р"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="р"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_о"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="о"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_л"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="л"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_д"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="д"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_ж"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="ж"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_э"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="э"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_ю"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="ю"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <!-- 2 кнопки с буквами "д" и "е" -->
+            <Button
+                android:id="@+id/button_я"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="я"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_ч"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="ч"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_с"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="с"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_м"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="м"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_и"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="и"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_т"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="т"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_ь"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="ь"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_б"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="б"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_ё"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="ё"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button_del"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:textSize="24sp"
+                android:text="\u232B" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

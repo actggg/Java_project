@@ -11,14 +11,14 @@ import android.content.ClipboardManager;
 
 public class Dialog {
     private static Activity activity;
-    public String my_word;
-    public Integer number_str;
+    private String my_word;
+    private Integer number_str;
     private Integer lvl_in_main;
     private Integer lvl_in_easy;
     private Integer lvl_in_medium;
     private Integer lvl_in_hard;
-    public String word;
-    public String code = "ааааа";
+    private String word;
+    private String code = "ааааа";
     public Menu menu;
     private Context context;
     public Dialog( Activity _activity, Context context, String my_word, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard){
@@ -50,7 +50,6 @@ public class Dialog {
     }
     public int trueWord(int num, String clicked_button, String my_str) {
         if (my_str.equals(my_word)) {
-            //dialog("Всё верно!!!");
             if (clicked_button != "PASS") {
                 Check_by_button ch_bt = new Check_by_button(lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                 ch_bt.next_lvl(clicked_button);
@@ -64,7 +63,6 @@ public class Dialog {
         else if (num == 5){
             number_str = 1;
             return 2;
-            //dialog("Вы ошиблись!!!");
         }
         return 3;
     }

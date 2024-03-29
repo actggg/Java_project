@@ -13,7 +13,7 @@ public class Checker {
     private Integer lvl_in_easy;
     private Integer lvl_in_medium;
     private Integer lvl_in_hard;
-    public Integer number_str;
+    private Integer number_str;
     private String my_word;
     private Context context;
 

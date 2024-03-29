@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class File_helper{
     Context context;
 
-    public String my_word;
+    private String my_word;
     private Integer lvl_in_main;
     private Integer lvl_in_easy;
     private Integer lvl_in_medium;
