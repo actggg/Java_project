@@ -18,10 +18,10 @@ public class Dialog {
     private Integer lvl_in_medium;
     private Integer lvl_in_hard;
     private String word;
-    private String code = "ааааа";
     public Menu menu;
     private Context context;
-    public Dialog( Activity _activity, Context context, String my_word, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard){
+
+    public Dialog(Activity _activity, Context context, String my_word, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard) {
         this.activity = _activity;
         this.my_word = my_word;
         this.context = context;
@@ -31,7 +31,7 @@ public class Dialog {
         this.lvl_in_hard = lvl_in_hard;
     }
 
-    public Dialog(Activity _activity, Context context, Menu menu, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard){
+    public Dialog(Activity _activity, Context context, Menu menu, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard) {
         this.activity = _activity;
         this.context = context;
         this.menu = menu;
@@ -41,13 +41,7 @@ public class Dialog {
         this.lvl_in_hard = lvl_in_hard;
     }
 
-    public String getCode(){
-        return this.code;
-    }
 
-    public void setWord(String word_input){
-        this.word = word_input;
-    }
     public int trueWord(int num, String clicked_button, String my_str) {
         if (my_str.equals(my_word)) {
             if (clicked_button != "PASS") {
@@ -59,15 +53,14 @@ public class Dialog {
                 lvl_in_hard = ch_bt.getLvl_in_hard();
             }
             return 1;
-        }
-        else if (num == 5){
+        } else if (num == 5) {
             number_str = 1;
             return 2;
         }
         return 3;
     }
 
-    public void dialog(String text){
+    public void dialog(String text) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage(text)
                 .setPositiveButton("ОК", null)

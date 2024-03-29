@@ -4,12 +4,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
-public class Play{
+
+public class Play {
 
     public void applyRussianLettersFilter(EditText editText) {
         editText.setOnKeyListener(new View.OnKeyListener() {
@@ -46,6 +44,7 @@ public class Play{
             }
         });
     }
+
     private void moveToNextField(EditText currentEditText) {
         View next = currentEditText.focusSearch(View.FOCUS_RIGHT);
         if (next != null) {

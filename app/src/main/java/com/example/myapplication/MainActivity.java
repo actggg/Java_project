@@ -4,28 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.graphics.Color;
-import android.app.AlertDialog;
-import android.widget.ImageButton;
-import android.widget.TextView;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -59,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
             menu.setMenu(menu);
             menu.menu();
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Log.d("TAG1", e.getMessage());
         }
 

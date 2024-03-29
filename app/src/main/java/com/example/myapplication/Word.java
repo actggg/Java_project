@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class Word{
+public class Word {
     private static Activity activity;
     private String my_button;
     private Integer lvl_in_main;
@@ -19,11 +19,10 @@ public class Word{
     private Context context;
     private String my_word;
     private EditText[] inputs;
-    private Button[] buttons;
     private Integer number_str;
     public Menu menu1;
 
-    public Word( Activity _activity, Context context, Menu menu, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard){
+    public Word(Activity _activity, Context context, Menu menu, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard) {
         this.activity = _activity;
         this.context = context;
         this.menu1 = menu;
@@ -47,7 +46,7 @@ public class Word{
         }
     }
 
-    public void word_my_word(String my_word){
+    public void word_my_word(String my_word) {
         set_button_click();
         activity.setContentView(R.layout.word);
         this.number_str = 1;
@@ -77,7 +76,7 @@ public class Word{
             @Override
             public void onClick(View v) {
                 Checker checker = new Checker(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
-                if (checker.check(number_str, clicked_button, inputs) == 1){
+                if (checker.check(number_str, clicked_button, inputs) == 1) {
                     menu1.menu();
                     Dialog dialog = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                     dialog.dialog("Все верно!!!");
@@ -85,12 +84,11 @@ public class Word{
                     menu1.menu();
                     Dialog dialog = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                     dialog.dialog("Вы ошиблись!!!");
-                } else if (checker.check(number_str, clicked_button, inputs) == 3){
+                } else if (checker.check(number_str, clicked_button, inputs) == 3) {
                     Log.d("TEG1", "3");
                     number_str = checker.getNumber_str();
                     block(number_str);
-                }
-                else {
+                } else {
                     Dialog dialog = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                     dialog.dialog("Такого слова не существует!!!");
                 }
@@ -134,7 +132,7 @@ public class Word{
             public void onClick(View v) {
                 Log.d("TEG1", "1");
                 Checker checker = new Checker(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
-                if (checker.check(number_str, clicked_button, inputs) == 1){
+                if (checker.check(number_str, clicked_button, inputs) == 1) {
                     Log.d("TEG1", "1");
                     Check_by_button cbb = new Check_by_button(lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                     cbb.next_lvl(clicked_button);
@@ -150,12 +148,11 @@ public class Word{
                     set_and_menu(lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                     Dialog dialog = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                     dialog.dialog("Вы ошиблись!!!");
-                } else if (checker.check(number_str, clicked_button, inputs) == 3){
+                } else if (checker.check(number_str, clicked_button, inputs) == 3) {
                     Log.d("TEG1", "3");
                     number_str = checker.getNumber_str();
                     block(number_str);
-                }
-                else {
+                } else {
                     Dialog dialog = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                     dialog.dialog("Такого слова не существует!!!");
                 }
@@ -164,23 +161,23 @@ public class Word{
         });
     }
 
-    public void set_button_click(){
+    public void set_button_click() {
         Button bottons[] = new Button[33];
         char letter = 'а';
         for (int i = 1; i <= 33; i++) {
-                Button button = activity.findViewById(activity.getResources().getIdentifier("button_" + letter, "id", activity.getPackageName()));
-                letter++;
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        set_and_menu(lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
-                    }
-                });
-        }}
+            Button button = activity.findViewById(activity.getResources().getIdentifier("button_" + letter, "id", activity.getPackageName()));
+            letter++;
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    set_and_menu(lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
+                }
+            });
+        }
+    }
 
 
-
-    public void set_and_menu(Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard){
+    public void set_and_menu(Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard) {
         menu1.setLvl_in_main(lvl_in_main);
         menu1.setLvl_in_easy(lvl_in_easy);
         menu1.setLvl_in_medium(lvl_in_medium);
@@ -188,7 +185,7 @@ public class Word{
         menu1.menu();
 
     }
-    }
+}
         /*
         check_button.setOnClickListener(new View.OnClickListener() {
             @Override

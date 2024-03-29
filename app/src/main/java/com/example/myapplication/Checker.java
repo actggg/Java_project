@@ -62,7 +62,8 @@ public class Checker {
 
                 Dialog d = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                 return (d.trueWord(number_str, clicked_button, my_str));
-            }}
+            }
+        }
         return 4;
     }
         /*

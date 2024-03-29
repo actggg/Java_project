@@ -6,14 +6,9 @@ import android.util.Log;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 
-public class File_helper{
+public class File_helper {
     Context context;
 
     private String my_word;
@@ -22,7 +17,7 @@ public class File_helper{
     private Integer lvl_in_medium;
     private Integer lvl_in_hard;
 
-    public File_helper(Context context, String my_word, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard){
+    public File_helper(Context context, String my_word, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard) {
         this.context = context;
         this.my_word = my_word;
         this.lvl_in_main = lvl_in_main;
@@ -31,21 +26,20 @@ public class File_helper{
         this.lvl_in_hard = lvl_in_hard;
     }
 
-    public File_helper(){}
 
 
     public String file_buy_but(String clicked_button) {
         String file = "nn_words.txt";
-        if (clicked_button == "button_easy"){
+        if (clicked_button == "button_easy") {
             file = "words_easy.txt";
         }
-        if (clicked_button == "button_medium"){
+        if (clicked_button == "button_medium") {
             file = "words_medium.txt";
         }
-        if (clicked_button == "button_hard"){
+        if (clicked_button == "button_hard") {
             file = "words_hard.txt";
         }
-        if (clicked_button == "buttonlevels"){
+        if (clicked_button == "buttonlevels") {
             file = "go_lvls.txt";
         }
         return file;
@@ -55,7 +49,6 @@ public class File_helper{
         String filePath = file_buy_but(clicked_button);
         Check_by_button myClass = new Check_by_button(lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
         int lvl = myClass.check_lvl(clicked_button);
-        // Путь к папке Assets
         try {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(context.getAssets().open(filePath)));
@@ -64,18 +57,17 @@ public class File_helper{
             int lineCount = 1;
             while (lineCount <= 100) {
                 line = br.readLine();
-                // Если номер строки совпадает с заданным, возвращаем ее
                 if (lineCount == lvl) {
                     return line;
                 }
                 lineCount++;
             }
             return "";
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             return "лампа";
         }
     }
+
     public boolean check_in_file(String s) {
         try {
             String filePath = "nn_words.txt";

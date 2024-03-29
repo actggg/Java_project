@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;

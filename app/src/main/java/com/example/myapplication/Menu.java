@@ -5,9 +5,8 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
-public class Menu{
+public class Menu {
     private static Activity activity;
     private Integer lvl_in_main;
     private Integer lvl_in_easy;
@@ -16,7 +15,7 @@ public class Menu{
     private Context context;
     public Menu menu1;
 
-    public Menu( Activity _activity, Context context, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard){
+    public Menu(Activity _activity, Context context, Integer lvl_in_main, Integer lvl_in_easy, Integer lvl_in_medium, Integer lvl_in_hard) {
         this.activity = _activity;
         this.context = context;
         this.lvl_in_main = lvl_in_main;
@@ -25,7 +24,7 @@ public class Menu{
         this.lvl_in_hard = lvl_in_hard;
     }
 
-    public void setMenu(Menu menu){
+    public void setMenu(Menu menu) {
         this.menu1 = menu;
     }
 
@@ -36,9 +35,11 @@ public class Menu{
     public Integer getLvl_in_easy() {
         return lvl_in_easy;
     }
+
     public Integer getLvl_in_medium() {
         return lvl_in_medium;
     }
+
     public Integer getLvl_in_hard() {
         return lvl_in_hard;
     }
@@ -50,9 +51,11 @@ public class Menu{
     public void setLvl_in_easy(int lvl) {
         this.lvl_in_easy = lvl;
     }
+
     public void setLvl_in_medium(int lvl) {
         this.lvl_in_medium = lvl;
     }
+
     public void setLvl_in_hard(int lvl) {
         this.lvl_in_hard = lvl;
     }
@@ -104,8 +107,7 @@ public class Menu{
 
                 }
             });
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Log.d("TAGGG", e.getMessage());
         }
     }
