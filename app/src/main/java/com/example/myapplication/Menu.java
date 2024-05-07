@@ -66,7 +66,7 @@ public class Menu {
 
             Word word = new Word(activity, context, menu1, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
             Button buttonlevels = activity.findViewById(R.id.buttonlevels);
-            buttonlevels.setText("Прохождение уровней \n Уровень " + lvl_in_main + "/100");
+            buttonlevels.setText("Бесконечный режим \n Отгадано " + (lvl_in_main - 1) + " слов");
             buttonlevels.setOnClickListener(new View.OnClickListener() {
 
                 @Override

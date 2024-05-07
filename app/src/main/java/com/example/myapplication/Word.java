@@ -47,7 +47,8 @@ public class Word {
     }
 
     public void word_my_word(String my_word) {
-        set_button_click();
+        Log.d("TEG1", my_word);
+        Log.d("TEG1", "my_word");
         activity.setContentView(R.layout.word);
         this.number_str = 1;
         for (int i = 1; i <= 5; i++) {
@@ -58,6 +59,7 @@ public class Word {
             }
         }
         block(number_str);
+        Log.d("TEG1", "my_word");
         inputs = new EditText[]{activity.findViewById(R.id.letter_input1_1), activity.findViewById(R.id.letter_input1_2), activity.findViewById(R.id.letter_input1_3), activity.findViewById(R.id.letter_input1_4), activity.findViewById(R.id.letter_input1_5),
                 activity.findViewById(R.id.letter_input2_1), activity.findViewById(R.id.letter_input2_2), activity.findViewById(R.id.letter_input2_3), activity.findViewById(R.id.letter_input2_4), activity.findViewById(R.id.letter_input2_5),
                 activity.findViewById(R.id.letter_input3_1), activity.findViewById(R.id.letter_input3_2), activity.findViewById(R.id.letter_input3_3), activity.findViewById(R.id.letter_input3_4), activity.findViewById(R.id.letter_input3_5),
@@ -72,6 +74,7 @@ public class Word {
         });
         Button check_button = activity.findViewById(R.id.check_button);
         String clicked_button = "PASS";
+        Log.d("TEG1", "my_word");
         check_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +86,7 @@ public class Word {
                 } else if (checker.check(number_str, clicked_button, inputs) == 2) {
                     menu1.menu();
                     Dialog dialog = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
-                    dialog.dialog("Вы ошиблись!!!");
+                    dialog.dialog("Вы ошиблись, верное слово: " + my_word);
                 } else if (checker.check(number_str, clicked_button, inputs) == 3) {
                     Log.d("TEG1", "3");
                     number_str = checker.getNumber_str();
@@ -130,10 +133,8 @@ public class Word {
         check_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("TEG1", "1");
                 Checker checker = new Checker(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                 if (checker.check(number_str, clicked_button, inputs) == 1) {
-                    Log.d("TEG1", "1");
                     Check_by_button cbb = new Check_by_button(lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                     cbb.next_lvl(clicked_button);
                     lvl_in_main = cbb.getLvl_in_main();
@@ -144,12 +145,14 @@ public class Word {
                     Dialog dialog = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                     dialog.dialog("Все верно!!!");
                 } else if (checker.check(number_str, clicked_button, inputs) == 2) {
-                    Log.d("TEG1", "2");
                     set_and_menu(lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
                     Dialog dialog = new Dialog(activity, context, my_word, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
-                    dialog.dialog("Вы ошиблись!!!");
+                    if (clicked_button == "buttonlevels") {
+                        dialog.dialog("Вы ошиблись, верное слово: " + my_word);
+                    } else {
+                        dialog.dialog("Вы ошиблись!!!");
+                    }
                 } else if (checker.check(number_str, clicked_button, inputs) == 3) {
-                    Log.d("TEG1", "3");
                     number_str = checker.getNumber_str();
                     block(number_str);
                 } else {
@@ -159,21 +162,6 @@ public class Word {
 
             }
         });
-    }
-
-    public void set_button_click() {
-        Button bottons[] = new Button[33];
-        char letter = 'а';
-        for (int i = 1; i <= 33; i++) {
-            Button button = activity.findViewById(activity.getResources().getIdentifier("button_" + letter, "id", activity.getPackageName()));
-            letter++;
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    set_and_menu(lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
-                }
-            });
-        }
     }
 
 
@@ -186,12 +174,3 @@ public class Word {
 
     }
 }
-        /*
-        check_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                check(number_str, clicked_button);
-            }
-        });
-    }
-         */

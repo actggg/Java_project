@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
             Menu menu = new Menu(activity, context, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
             this.menu = menu;
-            Log.d("TAG1", "e.getMessage()");
             menu.setMenu(menu);
             menu.menu();
 

@@ -23,7 +23,7 @@
         android:layout_below="@+id/textViewTitle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
-        android:text="Прохождение уровней \n Уровень № 1"
+        android:text="Бесконечный режим \n Отгадано 0 слов"
         android:textSize="20dp" />
 
     <LinearLayout

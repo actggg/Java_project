@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.widget.EditText;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -106,7 +107,6 @@ public class Dialog {
 
         final EditText input = new EditText(context);
         builder.setView(input);
-
         builder.setPositiveButton("ОК", (dialog, which) -> {
             String friendCode = input.getText().toString();
             showMessage("Вы ввели шифр друга: " + friendCode);
