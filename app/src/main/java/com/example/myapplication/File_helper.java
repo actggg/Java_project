@@ -30,16 +30,16 @@ public class File_helper {
 
     public String file_buy_but(String clicked_button) {
         String file = "nn_words.txt";
-        if (clicked_button == "button_easy") {
+        if (clicked_button.equals("button_easy")) {
             file = "words_easy.txt";
         }
-        if (clicked_button == "button_medium") {
+        if (clicked_button.equals("button_medium")) {
             file = "words_medium.txt";
         }
-        if (clicked_button == "button_hard") {
+        if (clicked_button.equals("button_hard")) {
             file = "words_hard.txt";
         }
-        if (clicked_button == "buttonlevels") {
+        if (clicked_button.equals("buttonlevels")) {
             file = "go_lvls.txt";
         }
         return file;
@@ -71,12 +71,7 @@ public class File_helper {
     public boolean check_in_file(String s) {
         try {
             String filePath = "nn_words.txt";
-
-            if (isWordPresent(s, filePath)) {
-                return true;
-            } else {
-                return false;
-            }
+            return isWordPresent(s, filePath);
         } catch (IOException e) {
             e.printStackTrace();
             return false;
