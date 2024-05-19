@@ -7,7 +7,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.Random;
 
 public class File_helper {
     Context context;
@@ -31,14 +30,17 @@ public class File_helper {
 
     public String file_buy_but(String clicked_button) {
         String file = "nn_words.txt";
-        if (clicked_button.equals("button_easy")) {
+        if (clicked_button == "button_easy") {
             file = "words_easy.txt";
         }
-        if (clicked_button.equals("button_medium")) {
+        if (clicked_button == "button_medium") {
             file = "words_medium.txt";
         }
-        if (clicked_button.equals("button_hard")) {
+        if (clicked_button == "button_hard") {
             file = "words_hard.txt";
+        }
+        if (clicked_button == "buttonlevels") {
+            file = "go_lvls.txt";
         }
         return file;
     }
@@ -53,12 +55,7 @@ public class File_helper {
 
             String line;
             int lineCount = 1;
-            int col = 100;
-            if (clicked_button == "buttonlevels"){
-                Random rand = new Random();
-                lvl = rand.nextInt(4000);
-                col = 4000;}
-            while (lineCount <= col) {
+            while (lineCount <= 100) {
                 line = br.readLine();
                 if (lineCount == lvl) {
                     return line;
@@ -74,7 +71,12 @@ public class File_helper {
     public boolean check_in_file(String s) {
         try {
             String filePath = "nn_words.txt";
-            return isWordPresent(s, filePath);
+
+            if (isWordPresent(s, filePath)) {
+                return true;
+            } else {
+                return false;
+            }
         } catch (IOException e) {
             e.printStackTrace();
             return false;

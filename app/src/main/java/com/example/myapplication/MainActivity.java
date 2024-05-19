@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         context = this;
         activity = this;
         loadText();
+        Log.d("TAG1", "dddd");
         try {
 
             Menu menu = new Menu(activity, context, lvl_in_main, lvl_in_easy, lvl_in_medium, lvl_in_hard);
